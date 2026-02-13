@@ -15,7 +15,7 @@
   font-family:Arial, sans-serif;
 }
 
-/* Notification */
+
 #nowPlaying {
   position: fixed;
   top: 20px;
@@ -35,12 +35,12 @@
   z-index: 9999;
 }
 
-/* Slide in */
+
 #nowPlaying.show {
   right: 20px;
 }
 
-/* Thumbnail */
+
 #thumb {
   width: 75px;
   height: 75px;
@@ -49,7 +49,7 @@
   animation: spin 6s linear infinite;
 }
 
-/* Spin animation */
+
 @keyframes spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
@@ -84,7 +84,7 @@ html, body {
   align-items: center;
 }
 
-/* CRT wrapper with perspective */
+
 .crt {
   position: relative;
   width: 100%;
@@ -96,21 +96,21 @@ html, body {
   overflow: hidden;
 }
 
-/* CRT content container */
+
 .crt-content {
   position: relative;
   width: 1920px;   /* base design width */
   height: 1080px;  /* base design height */
   transform-origin: top left;
   
-  /* Tilt & pop-out effect */
+  
   transform: rotateX(6deg) rotateY(-3deg) scale(1);
   
-  /* Ensure scaling dynamically to fit viewport */
+  
   will-change: transform;
 }
 
-/* Barrel screen curvature */
+
 .crt-content::before {
   content: "";
   position: absolute;
@@ -125,7 +125,7 @@ html, body {
   z-index: 2;
 }
 
-/* Scanlines overlay */
+
 .crt::after {
   content: "";
   position: absolute;
@@ -142,7 +142,7 @@ html, body {
   z-index: 9999;
 }
 
-/* Flicker overlay */
+
 .crt-flicker {
   position: absolute;
   inset: 0;
@@ -158,7 +158,7 @@ html, body {
   100% { opacity: 0.92; }
 }
 
-/* RGB pop-out effect */
+
 .crt-content > * {
   position: relative;
   z-index: 3;
@@ -173,7 +173,7 @@ html, body {
   100% { text-shadow: 2px 0 #ff0000, -2px 0 #00ff00, 0 2px #0000ff; }
 }
 
-/* Text glow */
+
 h1, p, button {
   text-shadow:
     0 0 6px rgba(255,140,0,0.9),
@@ -181,7 +181,7 @@ h1, p, button {
     0 0 24px rgba(255,140,0,0.2);
 }
 
-/* Vignette for edges */
+
 body::before {
   content: "";
   pointer-events: none;
@@ -200,7 +200,7 @@ body::before {
   border-radius: 10% / 5%; /* slight curvature for top & bottom edges */
 }
 
-/* Wrap content in a container for barrel warp */
+
 .crt-content {
   position: relative;
   width: 100%;
@@ -213,22 +213,22 @@ body::before {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: 9996; /* behind flicker and text */
+  z-index: 9996; 
   overflow: hidden;
 }
 
-/* Individual streaks */
+
 .crt-streaks span {
   position: absolute;
-  bottom: -150%; /* start off-screen */
-  width: 8px; /* thickness of the streak */
-  height: 200%; /* enough to move across screen */
-  background: rgba(255, 255, 255, 0.08); /* semi-transparent white */
+  bottom: -150%; 
+  width: 8px; 
+  height: 200%; 
+  background: rgba(255, 255, 255, 0.08); 
   filter: blur(2px);
   animation: streakUp 3s linear infinite;
 }
 
-/* Stagger multiple streaks */
+
 .crt-streaks span:nth-child(1) { left: 10%; animation-delay: 0s; }
 .crt-streaks span:nth-child(2) { left: 25%; animation-delay: 0.5s; }
 .crt-streaks span:nth-child(3) { left: 40%; animation-delay: 1s; }
@@ -271,20 +271,14 @@ body::before {
     <center>
       <img src="248193079.png"></img>
       <h1 style="color:orange;">whaaaaazuuuuuup</h1>
-      <p style="color:orange;">Hello I am Sodaduhking (Soda.duh.king) 
-        I'm an alone substance abuser 
-        attempting to kickstart an internet career so I can feel l
+      <p style="color:orange;">Sup I'm Sodaduhking (Soda.duh.king) 
+        I'm A dude that yknow does dude things 
+        I'm attempting to kickstart an internet career so I can feel l
         ike someone out there hears me 
-        and cares about my existance for once I need help but i
-        won't recieve the help I need because I'm too mentally 
-        fucked 
+        and cares about my existance for once I need help
       https://www.youtube.com/@Sodaduhking
-     I want to be loved and it never happens because I'm that much of a fucking burden
-      Sometimes I feel so alone
-      I just don't know
-      Feels like I've been down this road before
-      So lonely and cold
-      It's like something takes over me as soon as I go home and close the door</p>
+       I really feel alone and the support would help in the long run and I really need it.
+      </p>
       <a href="fuck_you.html">
     <button>:)</button>
   </a>
@@ -388,7 +382,7 @@ const songs = [
 let shuffled = [];
 let currentIndex = 0;
 
-/* Clean Song Name */
+
 function cleanSongName(path) {
   let name = path.split("/").pop().replace(".mp3", "");
 
@@ -404,7 +398,7 @@ function cleanSongName(path) {
   return name;
 }
 
-/* Shuffle */
+
 function shuffle(array) {
   return array.sort(() => Math.random() - 0.5);
 }
