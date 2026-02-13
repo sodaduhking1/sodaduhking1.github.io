@@ -72,18 +72,180 @@
     }
     </style>
     
-    <script>
-        (function titleMarquee() {
-            let currentTitle = document.title;
-            let newTitle = currentTitle.substring(1) + currentTitle.substring(0, 1);
-            document.title = newTitle;
-            setTimeout(titleMarquee, 200);
-        })();
-    </script>
+   <script>
+(function titleMarquee() {
+    let currentTitle = document.title;
+    let newTitle = currentTitle.substring(1) + currentTitle.substring(0, 1);
+    document.title = newTitle;
+    setTimeout(titleMarquee, 200);
+})();
+
+const songs = [
+"Music/Alligator Skin Boots - Mcafferty.mp3",
+"Music/Anesthesia.mp3",
+"Music/banana pie.mp3",
+"Music/Beach Weather - sex, drugs, etc. (Lyrics).mp3",
+"Music/Bleed 4.mp3",
+"Music/blink-182 - Adam's Song (Lyrics).mp3",
+"Music/blink 182 - All The Small Things (Lyrics) 4.mp3",
+"Music/blink-182 - I Miss You (Lyrics).mp3",
+"Music/Corbon Amodio - Lucy (Lyrics).mp3",
+"Music/Coyote Theory - This Side of Paradise (Lyric Video) 4.mp3",
+"Music/did you want him instead_.mp3",
+"Music/EKKSTACY - i walk this earth all by myself (Official Visualizer) 4.mp3",
+"Music/Eminem - Deja Vu (Lyrics).mp3",
+"Music/Eminem - Love The Way You Lie ft. Rihanna 4.mp3",
+"Music/Eminem - The Monster (Lyrics) ft. Rihanna 4.mp3",
+"Music/Fine ▪︎Lemon Demon (Lyrics) 4.mp3",
+"Music/Frank Ocean - White Ferrari (Lyrics) 4.mp3",
+"Music/GENOCIDE 4.mp3",
+"Music/Gigi Perez - Sailor Song 4.mp3",
+"Music/Girlfriends - New Computers.mp3",
+"Music/i exist i exist i exist _ flatsound _ lyric video.mp3",
+"Music/i feel sick.mp3",
+"Music/i love u so much.mp3",
+"Music/i still want u.mp3",
+"Music/juju - Wasted Summers (Lyrics) 4.mp3",
+"Music/Jungle - Back On 74 (Lyrics) 4.mp3",
+"Music/Kendrick Lamar - meet the grahams (Lyrics) (Drake Diss).mp3",
+"Music/kms.mp3",
+"Music/KoruSe, mzmff - Two Different Worlds 4.mp3",
+"Music/kurffew - i dont wna cry (haste) (official audio) 4.mp3",
+"Music/Last Night.mp3",
+"Music/Lil Darkie - do you love me (Lyrics).mp3",
+"Music/Lil Darkie - HAHA (Lyrics).mp3",
+"Music/Lil Darkie - HOLOCAUST.mp3",
+"Music/Lil Peep - nuts (feat. rainy bear) (Official Audio) 4.mp3",
+"Music/Lit - My Own Worst Enemy (Lyrics).mp3",
+"Music/Maccfferty - bottom (lyrics).mp3",
+"Music/memory.mp3",
+"Music/migraine 4.mp3",
+"Music/Nope your too late i already died 4.mp3",
+"Music/notion.mp3",
+"Music/Oasis - Wonderwall (Lyrics) 4.mp3",
+"Music/overtonight - spiral song (official audio).mp3",
+"Music/overtonight - twenty four (official audio).mp3",
+"Music/party 4.mp3",
+"Music/Pinegrove - Need 2 (official lyric video) 4.mp3",
+"Music/Radiohead - Creep (Lyrics) 4.mp3",
+"Music/Radiohead - Let Down 4.mp3",
+"Music/Radiohead - No Surprises (Lyrics) 4.mp3",
+"Music/Rainbow Kitten Surprise - It's Called_ Freefall (Lyrics) 4.mp3",
+"Music/Red Hot Chili Peppers - Scar Tissue (Lyrics) 4.mp3",
+"Music/s0rrow - unhappy (lyrics).mp3",
+"Music/Samia - Pool (Stripped).mp3",
+"Music/Scott Pilgrim vs. My GPA 4.mp3",
+"Music/shotgun..mp3",
+"Music/small.mp3",
+"Music/Suicide Letter.mp3",
+"Music/Sylendanna_Nice2KnowYa! (Official Audio - Free Download).mp3",
+"Music/System of a Down - Lonely Day 4.mp3",
+"Music/Tell Me Lover, Do You Love Me_ 4.mp3",
+"Music/the adults are talking.mp3",
+"Music/The Cure - Boys Don't Cry (Lyrics) 4.mp3",
+"Music/The Fray - How to Save a Life (Lyrics) 4.mp3",
+"Music/The Killers - Mr. Brightside (Lyrics).mp3",
+"Music/The Marías - No One Noticed 4.mp3",
+"Music/The Neighbourhood - Sweater Weather (Lyrics) 4.mp3",
+"Music/The Walters -- I Love You So 4.mp3",
+"Music/through (Remastered).mp3",
+"Music/Tom Rosenthal - Lights Are On (Lyrics) 4.mp3",
+"Music/Treehouse - Alex G (Lyrics) 4.mp3",
+"Music/Trees II 4.mp3",
+"Music/Trippie Redd Performs _Wish_ With Live Orchestra _ Audiomack Trap Symphony 4.mp3",
+"Music/TV Girl - Cigarettes out the Window (Lyrics) 4.mp3",
+"Music/TV Girl - For You 4.mp3",
+"Music/TV Girl - It Almost Worked.mp3",
+"Music/Tv Girl -Loving Machine.mp3",
+"Music/Tv Girl - Not Allowed 4.mp3",
+"Music/Wifiskeleton - My Twenty first reason _ Lyric Video  #llws.mp3",
+"Music/Wifiskeleton - puking out my guts lol.mp3",
+"Music/window.mp3",
+"Music/would u notice.mp3",
+"Music/XXXTENTACION & YE - True Love (Official Audio) 4.mp3",
+"Music/young wild and free.mp3"
+];
+
+
+let shuffled = [];
+let currentIndex = 0;
+
+/* Clean Song Name */
+function cleanSongName(path) {
+  let name = path.split("/").pop().replace(".mp3", "");
+
+  name = name.replace(/\(.*?lyrics.*?\)/gi, "");
+  name = name.replace(/\(.*?official.*?\)/gi, "");
+  name = name.replace(/\(.*?visualizer.*?\)/gi, "");
+  name = name.replace(/\(.*?audio.*?\)/gi, "");
+  name = name.replace(/\(.*?lyric video.*?\)/gi, "");
+  name = name.replace(/\s4$/g, "");
+  name = name.replace(/_/g, " ");
+  name = name.replace(/\s+/g, " ").trim();
+
+  return name;
+}
+
+/* Shuffle */
+function shuffle(array) {
+  return array.sort(() => Math.random() - 0.5);
+}
+
+function startShuffle() {
+  shuffled = shuffle([...songs]);
+  currentIndex = 0;
+  playNext();
+}
+
+function playNext() {
+  if (currentIndex >= shuffled.length) {
+    startShuffle();
+    return;
+  }
+
+  const songPath = shuffled[currentIndex];
+  const audio = document.getElementById("audio");
+  const nowPlaying = document.getElementById("nowPlaying");
+  const text = document.getElementById("text");
+  const thumb = document.getElementById("thumb");
+
+  audio.src = songPath;
+
+  const cleanName = cleanSongName(songPath);
+  text.textContent = "Playing " + cleanName;
+
+ 
+  thumb.src = "audio-speakers.png";
+
+  nowPlaying.classList.add("show");
+  setTimeout(() => {
+    nowPlaying.classList.remove("show");
+  }, 4000);
+
+  audio.play();
+}
+
+document.getElementById("audio").addEventListener("ended", () => {
+  currentIndex++;
+  playNext();
+});
+
+document.body.addEventListener("click", () => {
+  startShuffle();
+}, { once: true });
+</script>
+
     
   </head>
   <body style="background-color:black;">
-    <audio src="taat.mp3" autoplay loop></audio>
+    
+    <div id="nowPlaying">
+  <img id="thumb">
+  <div id="text">Playing</div>
+</div>
+
+<audio id="audio"></audio>
+    
     <center>
       <img src="248193079.png"></img>
       <h1 style="color:orange;">whaaaaazuuuuuup</h1>
