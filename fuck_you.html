@@ -1,0 +1,189 @@
+<!-- coding this website and everything related to it has braught me nothing but pure pain this specific part of sodaduhking2.github.io used to have alot more information that it desplays but it kept failing to grab it so i just cut it-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>:)</title>
+    <meta property="og:title" content="fuk u :o">
+    <meta property="og:description" content="t(._.)t">
+    <meta property="og:image" content="https://sodaduhking2.github.io/sodaduhking2.github.io/background.jpg">
+    <meta property="og:url" content="https://sodaduhking2.github.io/fuck_you.html">
+    <style>
+        body {
+            background-image: url('fuck you.gif');
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        .container {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        #ip-info {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>you are now breathing manually</h1>
+        <div id="ip-info"></div>
+    </div>
+
+    <audio id="fuck-you-audio" src="fuck_you.mp3" autoplay loop></audio>
+
+    <script>
+        function getIPInfo() {
+            fetch('https://ipapi.co/json/')
+                .then(response => response.json())
+                .then(data => {
+                    displayIPInfo(data);
+                })
+                .catch(error => {
+                    console.error('Error fetching IP info:', error);
+                });
+        }
+
+        function getScreenInfo() {
+            const screenWidth = window.screen.width;
+            const screenHeight = window.screen.height;
+            const screenOrientation = screen.orientation.type;
+            const screenRotation = screen.orientation.angle;
+            const pixelDepth = screen.pixelDepth;
+
+            return {
+                screenWidth,
+                screenHeight,
+                screenOrientation,
+                screenRotation,
+                pixelDepth
+            };
+        }
+
+        function getDeviceInfo() {
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            const referrer = document.referrer;
+            const language = navigator.language;
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+            const browserName = navigator.appName;
+            const platformName = navigator.platform;
+            const browserVersion = navigator.appVersion;
+
+            return {
+                isMobile,
+                referrer,
+                language,
+                windowWidth,
+                windowHeight,
+                browserName,
+                platformName,
+                browserVersion
+            };
+        }
+
+        function displayIPInfo(ipInfo) {
+            const infoContainer = document.getElementById('ip-info');
+            const infoKeys = ['ip', 'city', 'region', 'country_name', 'postal', 'timezone', 'org', 'asn', 'latitude', 'longitude', 'screen_width', 'screen_height', 'screen_orientation', 'screen_rotation', 'pixel_depth', 'is_mobile', 'referrer', 'language', 'window_width', 'window_height', 'browser_name', 'platform_name', 'browser_version'];
+            let delay = 0;
+
+            infoKeys.forEach(key => {
+                if (ipInfo[key] !== undefined) {
+                    setTimeout(() => {
+                        infoContainer.innerHTML += `<p>${key}: ${ipInfo[key]}</p>`;
+                    }, delay);
+                    delay += 1000;
+                }
+            });
+
+            const screenInfo = getScreenInfo();
+            const deviceInfo = getDeviceInfo();
+
+           
+            setTimeout(() => {
+                if (screenInfo.screenWidth !== undefined) {
+                    infoContainer.innerHTML += `<p>Screen Width: ${screenInfo.screenWidth}</p>`;
+                }
+                if (screenInfo.screenHeight !== undefined) {
+                    infoContainer.innerHTML += `<p>Screen Height: ${screenInfo.screenHeight}</p>`;
+                }
+                if (screenInfo.screenOrientation !== undefined) {
+                    infoContainer.innerHTML += `<p>Screen Orientation: ${screenInfo.screenOrientation}</p>`;
+                }
+                if (screenInfo.screenRotation !== undefined) {
+                    infoContainer.innerHTML += `<p>Screen Rotation: ${screenInfo.screenRotation}</p>`;
+                }
+                if (screenInfo.pixelDepth !== undefined) {
+                    infoContainer.innerHTML += `<p>Pixel Depth: ${screenInfo.pixelDepth}</p>`;
+                }
+                if (deviceInfo.isMobile !== undefined) {
+                    infoContainer.innerHTML += `<p>Is Mobile: ${deviceInfo.isMobile}</p>`;
+                }
+                if (deviceInfo.referrer !== undefined) {
+                    infoContainer.innerHTML += `<p>Referrer: ${deviceInfo.referrer}</p>`;
+                }
+                if (deviceInfo.language !== undefined) {
+                    infoContainer.innerHTML += `<p>Language: ${deviceInfo.language}</p>`;
+                }
+                if (deviceInfo.windowWidth !== undefined) {
+                    infoContainer.innerHTML += `<p>Window Width: ${deviceInfo.windowWidth}</p>`;
+                }
+                if (deviceInfo.windowHeight !== undefined) {
+                    infoContainer.innerHTML += `<p>Window Height: ${deviceInfo.windowHeight}</p>`;
+                }
+                if (deviceInfo.browserName !== undefined) {
+                    infoContainer.innerHTML += `<p>Browser Name: ${deviceInfo.browserName}</p>`;
+                }
+                if (deviceInfo.platformName !== undefined) {
+                    infoContainer.innerHTML += `<p>Platform Name: ${deviceInfo.platformName}</p>`;
+                }
+                if (deviceInfo.browserVersion !== undefined) {
+                    infoContainer.innerHTML += `<p>Browser Version: ${deviceInfo.browserVersion}</p>`;
+                }
+            }, delay);
+        }
+
+        function handleScroll() {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            const infoContainer = document.getElementById('ip-info');
+            const ipInfo = infoContainer.querySelector('p:first-child');
+
+            if (ipInfo && scrollTop >= ipInfo.offsetTop) {
+                infoContainer.style.fontSize = '16px';
+            } else {
+                infoContainer.style.fontSize = '20px';
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll);
+
+        window.addEventListener('load', () => {
+            if (document.fullscreenEnabled) {
+                document.documentElement.requestFullscreen();
+            }
+        });
+
+        getIPInfo();
+    </script>
+</body>
+</html>
