@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="shortcut icon" type="image/x-icon" href="favico.ico">
+    <title>My name is Walter Hartwell White. I live at 308 Negra Arroyo Lane, Albuquerque, New Mexico, 87104. This is my confession. If you're watching this tape, I'm probably dead, murdered by my brother-in-law Hank Schrader. Hank has been building a meth empire for over a year now and using me as his chemist. Shortly after my 50th birthday, Hank came to me with a rather, shocking proposition. He asked that I use my chemistry knowledge to cook methamphetamine, which he would then sell using his connections in the drug world. Connections that he made through his career with the DEA. I was... astounded, I... I always thought that Hank was a very moral man and I was... thrown, confused, but I was also particularly vulnerable at the time, something he knew and took advantage of. I was reeling from a cancer diagnosis that was poised to bankrupt my family. Hank took me on a ride along, and showed me just how much money even a small meth operation could make. And I was weak. I didn't want my family to go into financial ruin so I agreed. Every day, I think back at that moment with regret. I quickly realized that I was in way over my head, and Hank had a partner, a man named Gustavo Fring, a businessman. Hank essentially sold me into servitude to this man, and when I tried to quit, Fring threatened my family. I didn't know where to turn. Eventually, Hank and Fring had a falling out. From what I can gather, Hank was always pushing for a greater share of the business, to which Fring flatly refused to give him, and things escalated. Fring was able to arrange, uh I guess I guess you call it a "hit" on my brother-in-law, and failed, but Hank was seriously injured, and I wound up paying his medical bills which amounted to a little over $177,000. Upon recovery, Hank was bent on revenge, working with a man named Hector Salamanca, he plotted to kill Fring, and did so. In fact, the bomb that he used was built by me, and he gave me no option in it. I have often contemplated suicide, but I'm a coward. I wanted to go to the police, but I was frightened. Hank had risen in the ranks to become the head of the Albuquerque DEA, and about that time, to keep me in line, he took my children from me. For 3 months he kept them. My wife, who up until that point, had no idea of my criminal activities, was horrified to learn what I had done, why Hank had taken our children. We were scared. I was in Hell, I hated myself for what I had brought upon my family. Recently, I tried once again to quit, to end this nightmare, and in response, he gave me this. I can't take this anymore. I live in fear every day that Hank will kill me, or worse, hurt my family. I... All I could think to do was to make this video in hope that the world will finally see this man, for what he really is.</title>
+    <meta property="og:title" content="SODA'S HOME">
+    <meta property="og:description" content="god I really just want to kill myself">
+    <meta property="og:url" content="https://sodaduhking1.github.io/sodaduhking1.github.io">
+    <style>
+
+
+      body {
+  margin:0;
+  background:#0e0e0e;
+  font-family:Arial, sans-serif;
+}
+
+/* Notification */
+#nowPlaying {
+  position: fixed;
+  top: 20px;
+  right: -420px;
+  width: 340px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border: 1px solid rgba(255,255,255,0.8);
+  border-radius: 22px;
+  background: rgba(120,120,120,0.25);
+  backdrop-filter: blur(14px);
+  color: white;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+  transition: right 0.6s cubic-bezier(.25,.8,.25,1);
+  z-index: 9999;
+}
+
+/* Slide in */
+#nowPlaying.show {
+  right: 20px;
+}
+
+/* Thumbnail */
+#thumb {
+  width: 75px;
+  height: 75px;
+  border-radius: 16px;
+  object-fit: cover;
+  animation: spin 6s linear infinite;
+}
+
+/* Spin animation */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+#text {
+  font-size: 15px;
+  font-weight: 500;
+}
+      button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: orange;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: #0a0a0a;
+  font-family: monospace, monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CRT wrapper with perspective */
+.crt {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  perspective: 2000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* CRT content container */
+.crt-content {
+  position: relative;
+  width: 1920px;   /* base design width */
+  height: 1080px;  /* base design height */
+  transform-origin: top left;
+  
+  /* Tilt & pop-out effect */
+  transform: rotateX(6deg) rotateY(-3deg) scale(1);
+  
+  /* Ensure scaling dynamically to fit viewport */
+  will-change: transform;
+}
+
+/* Barrel screen curvature */
+.crt-content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center,
+    rgba(255,255,255,0.02) 0%,
+    transparent 60%
+  );
+  transform: scaleX(1.06) scaleY(1.03);
+  mix-blend-mode: overlay;
+  z-index: 2;
+}
+
+/* Scanlines overlay */
+.crt::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.03) 0px,
+    rgba(255,255,255,0.03) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: overlay;
+  z-index: 9999;
+}
+
+/* Flicker overlay */
+.crt-flicker {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.06);
+  pointer-events: none;
+  animation: flicker 0.12s infinite;
+  z-index: 9998;
+}
+
+@keyframes flicker {
+  0% { opacity: 0.9; }
+  50% { opacity: 1; }
+  100% { opacity: 0.92; }
+}
+
+/* RGB pop-out effect */
+.crt-content > * {
+  position: relative;
+  z-index: 3;
+  animation: rgb-pop 2s infinite linear;
+}
+
+@keyframes rgb-pop {
+  0% { text-shadow: 2px 0 #ff0000, -2px 0 #00ff00, 0 2px #0000ff; }
+  25% { text-shadow: -2px 0 #ff0000, 2px 0 #00ff00, 0 -2px #0000ff; }
+  50% { text-shadow: 0 2px #ff0000, 0 -2px #00ff00, 2px 0 #0000ff; }
+  75% { text-shadow: -2px 2px #ff0000, 2px -2px #00ff00, -2px -2px #0000ff; }
+  100% { text-shadow: 2px 0 #ff0000, -2px 0 #00ff00, 0 2px #0000ff; }
+}
+
+/* Text glow */
+h1, p, button {
+  text-shadow:
+    0 0 6px rgba(255,140,0,0.9),
+    0 0 12px rgba(255,140,0,0.5),
+    0 0 24px rgba(255,140,0,0.2);
+}
+
+/* Vignette for edges */
+body::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 60%,
+    rgba(0,0,0,0.75) 100%
+  );
+  z-index: 9997;
+}
+
+ .crt::before,
+.crt::after {
+  border-radius: 10% / 5%; /* slight curvature for top & bottom edges */
+}
+
+/* Wrap content in a container for barrel warp */
+.crt-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: perspective(1200px) rotateX(1deg) scale(1.02);
+  overflow: hidden;
+}
+
+.crt-streaks {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9996; /* behind flicker and text */
+  overflow: hidden;
+}
+
+/* Individual streaks */
+.crt-streaks span {
+  position: absolute;
+  bottom: -150%; /* start off-screen */
+  width: 8px; /* thickness of the streak */
+  height: 200%; /* enough to move across screen */
+  background: rgba(255, 255, 255, 0.08); /* semi-transparent white */
+  filter: blur(2px);
+  animation: streakUp 3s linear infinite;
+}
+
+/* Stagger multiple streaks */
+.crt-streaks span:nth-child(1) { left: 10%; animation-delay: 0s; }
+.crt-streaks span:nth-child(2) { left: 25%; animation-delay: 0.5s; }
+.crt-streaks span:nth-child(3) { left: 40%; animation-delay: 1s; }
+.crt-streaks span:nth-child(4) { left: 60%; animation-delay: 1.5s; }
+.crt-streaks span:nth-child(5) { left: 75%; animation-delay: 2s; }
+.crt-streaks span:nth-child(6) { left: 90%; animation-delay: 2.5s; }
+
+@keyframes streakUp {
+  0% { transform: translateY(100%); opacity: 0.1; }
+  30% { opacity: 0.3; }
+  60% { opacity: 0.1; }
+  100% { transform: translateY(-100%); opacity: 0; }
+}
+
+    </style>
+    
+
+    
+  </head>
+  <body class="crt" style="background-color:black;">
+     <div class="crt-content">
+       <div class="crt-flicker">
+         <div class="crt-streaks">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+  
+    <div id="nowPlaying">
+  <img id="thumb">
+  <div id="text">Playing</div>
+</div>
+
+<audio id="audio"></audio>
+    
+    <center>
+      <img src="248193079.png"></img>
+      <h1 style="color:orange;">whaaaaazuuuuuup</h1>
+      <p style="color:orange;">Hello I am Sodaduhking (Soda.duh.king) 
+        I'm an alone substance abuser 
+        attempting to kickstart an internet career so I can feel l
+        ike someone out there hears me 
+        and cares about my existance for once I need help but i
+        won't recieve the help I need because I'm too mentally 
+        fucked 
+      https://www.youtube.com/@Sodaduhking
+     I want to be loved and it never happens because I'm that much of a fucking burden
+      Sometimes I feel so alone
+      I just don't know
+      Feels like I've been down this road before
+      So lonely and cold
+      It's like something takes over me as soon as I go home and close the door</p>
+      <a href="fuck_you.html">
+    <button>:)</button>
+  </a>
+      
+    </center>
+    <script>
+(function titleMarquee() {
+    let currentTitle = document.title;
+    let newTitle = currentTitle.substring(1) + currentTitle.substring(0, 1);
+    document.title = newTitle;
+    setTimeout(titleMarquee, 200);
+})();
+
+const songs = [
+"Music/Alligator Skin Boots - Mcafferty.mp3",
+"Music/Anesthesia.mp3",
+"Music/banana pie.mp3",
+"Music/Beach Weather - sex, drugs, etc. (Lyrics).mp3",
+"Music/Bleed 4.mp3",
+"Music/blink-182 - Adam's Song (Lyrics).mp3",
+"Music/blink 182 - All The Small Things (Lyrics) 4.mp3",
+"Music/blink-182 - I Miss You (Lyrics).mp3",
+"Music/Corbon Amodio - Lucy (Lyrics).mp3",
+"Music/Coyote Theory - This Side of Paradise (Lyric Video) 4.mp3",
+"Music/did you want him instead_.mp3",
+"Music/EKKSTACY - i walk this earth all by myself (Official Visualizer) 4.mp3",
+"Music/Eminem - Deja Vu (Lyrics).mp3",
+"Music/Eminem - Love The Way You Lie ft. Rihanna 4.mp3",
+"Music/Eminem - The Monster (Lyrics) ft. Rihanna 4.mp3",
+"Music/Fine ▪︎Lemon Demon (Lyrics) 4.mp3",
+"Music/Frank Ocean - White Ferrari (Lyrics) 4.mp3",
+"Music/GENOCIDE 4.mp3",
+"Music/Gigi Perez - Sailor Song 4.mp3",
+"Music/Girlfriends - New Computers.mp3",
+"Music/i exist i exist i exist _ flatsound _ lyric video.mp3",
+"Music/i feel sick.mp3",
+"Music/i love u so much.mp3",
+"Music/i still want u.mp3",
+"Music/juju - Wasted Summers (Lyrics) 4.mp3",
+"Music/Jungle - Back On 74 (Lyrics) 4.mp3",
+"Music/Kendrick Lamar - meet the grahams (Lyrics) (Drake Diss).mp3",
+"Music/kms.mp3",
+"Music/KoruSe, mzmff - Two Different Worlds 4.mp3",
+"Music/kurffew - i dont wna cry (haste) (official audio) 4.mp3",
+"Music/Last Night.mp3",
+"Music/Lil Darkie - do you love me (Lyrics).mp3",
+"Music/Lil Darkie - HAHA (Lyrics).mp3",
+"Music/Lil Darkie - HOLOCAUST.mp3",
+"Music/Lil Peep - nuts (feat. rainy bear) (Official Audio) 4.mp3",
+"Music/Lit - My Own Worst Enemy (Lyrics).mp3",
+"Music/Maccfferty - bottom (lyrics).mp3",
+"Music/memory.mp3",
+"Music/migraine 4.mp3",
+"Music/Nope your too late i already died 4.mp3",
+"Music/notion.mp3",
+"Music/Oasis - Wonderwall (Lyrics) 4.mp3",
+"Music/overtonight - spiral song (official audio).mp3",
+"Music/overtonight - twenty four (official audio).mp3",
+"Music/party 4.mp3",
+"Music/Pinegrove - Need 2 (official lyric video) 4.mp3",
+"Music/Radiohead - Creep (Lyrics) 4.mp3",
+"Music/Radiohead - Let Down 4.mp3",
+"Music/Radiohead - No Surprises (Lyrics) 4.mp3",
+"Music/Rainbow Kitten Surprise - It's Called_ Freefall (Lyrics) 4.mp3",
+"Music/Red Hot Chili Peppers - Scar Tissue (Lyrics) 4.mp3",
+"Music/s0rrow - unhappy (lyrics).mp3",
+"Music/Samia - Pool (Stripped).mp3",
+"Music/Scott Pilgrim vs. My GPA 4.mp3",
+"Music/shotgun..mp3",
+"Music/small.mp3",
+"Music/Suicide Letter.mp3",
+"Music/Sylendanna_Nice2KnowYa! (Official Audio - Free Download).mp3",
+"Music/System of a Down - Lonely Day 4.mp3",
+"Music/Tell Me Lover, Do You Love Me_ 4.mp3",
+"Music/the adults are talking.mp3",
+"Music/The Cure - Boys Don't Cry (Lyrics) 4.mp3",
+"Music/The Fray - How to Save a Life (Lyrics) 4.mp3",
+"Music/The Killers - Mr. Brightside (Lyrics).mp3",
+"Music/The Marías - No One Noticed 4.mp3",
+"Music/The Neighbourhood - Sweater Weather (Lyrics) 4.mp3",
+"Music/The Walters -- I Love You So 4.mp3",
+"Music/through (Remastered).mp3",
+"Music/Tom Rosenthal - Lights Are On (Lyrics) 4.mp3",
+"Music/Treehouse - Alex G (Lyrics) 4.mp3",
+"Music/Trees II 4.mp3",
+"Music/Trippie Redd Performs _Wish_ With Live Orchestra _ Audiomack Trap Symphony 4.mp3",
+"Music/TV Girl - Cigarettes out the Window (Lyrics) 4.mp3",
+"Music/TV Girl - For You 4.mp3",
+"Music/TV Girl - It Almost Worked.mp3",
+"Music/Tv Girl -Loving Machine.mp3",
+"Music/Tv Girl - Not Allowed 4.mp3",
+"Music/Wifiskeleton - My Twenty first reason _ Lyric Video  #llws.mp3",
+"Music/Wifiskeleton - puking out my guts lol.mp3",
+"Music/window.mp3",
+"Music/would u notice.mp3",
+"Music/XXXTENTACION & YE - True Love (Official Audio) 4.mp3",
+"Music/young wild and free.mp3"
+];
+
+
+let shuffled = [];
+let currentIndex = 0;
+
+/* Clean Song Name */
+function cleanSongName(path) {
+  let name = path.split("/").pop().replace(".mp3", "");
+
+  name = name.replace(/\(.*?lyrics.*?\)/gi, "");
+  name = name.replace(/\(.*?official.*?\)/gi, "");
+  name = name.replace(/\(.*?visualizer.*?\)/gi, "");
+  name = name.replace(/\(.*?audio.*?\)/gi, "");
+  name = name.replace(/\(.*?lyric video.*?\)/gi, "");
+  name = name.replace(/\s4$/g, "");
+  name = name.replace(/_/g, " ");
+  name = name.replace(/\s+/g, " ").trim();
+
+  return name;
+}
+
+/* Shuffle */
+function shuffle(array) {
+  return array.sort(() => Math.random() - 0.5);
+}
+
+function startShuffle() {
+  shuffled = shuffle([...songs]);
+  currentIndex = 0;
+  playNext();
+}
+
+function playNext() {
+  if (currentIndex >= shuffled.length) {
+    startShuffle();
+    return;
+  }
+
+  const songPath = shuffled[currentIndex];
+  const audio = document.getElementById("audio");
+  const nowPlaying = document.getElementById("nowPlaying");
+  const text = document.getElementById("text");
+  const thumb = document.getElementById("thumb");
+
+  audio.src = songPath;
+
+  const cleanName = cleanSongName(songPath);
+  text.textContent = "Playing " + cleanName;
+
+ 
+  thumb.src = "audio-speakers.png";
+
+  nowPlaying.classList.add("show");
+  setTimeout(() => {
+    nowPlaying.classList.remove("show");
+  }, 4000);
+
+  audio.play();
+}
+
+document.getElementById("audio").addEventListener("ended", () => {
+  currentIndex++;
+  playNext();
+});
+
+document.body.addEventListener("click", () => {
+  startShuffle();
+}, { once: true });
+</script>
+  </body>
+</html>
