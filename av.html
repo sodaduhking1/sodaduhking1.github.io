@@ -254,8 +254,8 @@ body::before {
 
   <audio id="audio"></audio>
 
-  <div style="position: absolute; bottom: 0; left: 0; width: 100%; display: flex; justify-content: center; padding: 10px; box-sizing: border-box;">
-    <canvas id="visualizer" style="width: 100%; max-width: 800px; height: 150px;"></canvas>
+  <div style="position: absolute; bottom: 0; left: 0; width: 100%; display: flex; justify-content: center; padding: 10px; box-sizing: border-box; background: transparent;">
+    <canvas id="visualizer" style="width: 100%; max-width: 800px; height: 150px; background: transparent;"></canvas>
   </div>
 </div>
 <script>
@@ -371,7 +371,7 @@ body::before {
     name = name.replace(/\(.*?official.*?\)/gi, "");
     name = name.replace(/\(.*?visualizer.*?\)/gi, "");
     name = name.replace(/\(.*?audio.*?\)/gi, "");
-    name = name.replace(/\(.*?lyric video.*?\)/gi, "");
+       name = name.replace(/\(.*?lyric video.*?\)/gi, "");
     name = name.replace(/\s4$/g, "");
     name = name.replace(/_/g, " ");
     name = name.replace(/\s+/g, " ").trim();
@@ -424,7 +424,7 @@ body::before {
     startShuffle();
   }, { once: true });
 
-  // Add Cava-style visualizer with multiple vertical bars
+  // Add Cava-style visualizer with frequency mapping (bass = middle bars, highs = outer bars)
   const audio = document.getElementById('audio');
   const canvas = document.getElementById('visualizer');
   const ctx = canvas.getContext('2d');
@@ -445,15 +445,34 @@ body::before {
       requestAnimationFrame(draw);
       analyser.getByteFrequencyData(dataArray);
 
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      // Clear with transparent background
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       const barWidth = Math.max(1, (canvas.width / bufferLength) * 2.5);
       let x = 0;
 
+      // Map frequency bins to visual bars — bass (low freq) affects middle, highs affect edges
       for (let i = 0; i < bufferLength; i++) {
-        const barHeight = dataArray[i] / 2;
-        const color = `hsl(30, 100%, 50%)`; // Orange
+        // Normalize index to 0-1
+        const normalizedIndex = i / bufferLength;
+        
+        // Bass emphasis: middle bars get boosted by low frequencies
+        let barHeight = dataArray[i] / 2;
+        
+        // Boost middle bars for bass (0.3 to 0.7 range)
+        if (normalizedIndex > 0.3 && normalizedIndex < 0.7) {
+          barHeight *= 1.5; // Boost bass response in middle
+        }
+        // Slight boost for high frequencies (vocals, cymbals) on outer bars
+        else if (normalizedIndex > 0.8 || normalizedIndex < 0.2) {
+          barHeight *= 1.2;
+        }
+
+        // Cap height to canvas
+        if (barHeight > canvas.height) barHeight = canvas.height;
+
+        // Color: orange for all, but you can vary by freq if desired
+        const color = `hsl(30, 100%, 50%)`;
         ctx.fillStyle = color;
         ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
         x += barWidth + 1;
