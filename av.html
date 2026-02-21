@@ -215,10 +215,14 @@ body::before {
 
 .crt-content {
   position: relative;
-  width: 100%;
-  height: 100%;
-  transform: perspective(1200px) rotateX(1deg) scale(1.02);
-  overflow: hidden;
+  width: 1920px;   
+  height: 1080px;  
+  transform-origin: top left;
+  transform: rotateX(6deg) rotateY(-3deg) scale(1);
+  will-change: transform;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .crt-streaks {
@@ -280,9 +284,8 @@ body::before {
 
   <audio id="audio"></audio>
 
-  <center>
-    <canvas id="visualizer" width="800" height="200"></canvas>
-  </center>
+  <canvas id="visualizer" width="800" height="200" style="margin-top: auto;"></canvas>
+  
 </div>
 <script>
   (function titleMarquee() {
