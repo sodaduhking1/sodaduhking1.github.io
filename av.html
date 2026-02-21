@@ -359,7 +359,7 @@
     "Music/small.mp3",
     "Music/Suicide Letter.mp3",
     "Music/Sylendanna_Nice2KnowYa! (Official Audio - Free Download).mp3",
-    "Music/System of a Down - LonelyDay 4.mp3",
+    "Music/System of a Down - Lonely Day 4.mp3",
     "Music/Tell Me Lover, Do You Love Me_ 4.mp3",
     "Music/the adults are talking.mp3",
     "Music/The Cure - Boys Don't Cry (Lyrics) 4.mp3",
@@ -389,15 +389,17 @@
   let shuffled = [];
   let currentIndex = 0;
 
-  // Initialize Web Audio API immediately
   const audio = document.getElementById('audio');
   const canvas = document.getElementById('visualizer');
   const ctx = canvas.getContext('2d');
+  const instruction = document.getElementById('instruction');
 
   let audioContext, analyser, bufferLength, dataArray;
+  let isVisualizerActive = false;
 
-  // Set up Web Audio API once
+  // Setup Web Audio API on first user interaction
   function setupAudioContext() {
+    if (audioContext) return;
     audioContext = new (window.AudioContext || window.webkitAudioContext)();
     const source = audioContext.createMediaElementSource(audio);
     analyser = audioContext.createAnalyser();
@@ -408,9 +410,13 @@
     analyser.connect(audioContext.destination);
   }
 
-  // Start drawing visualizer when audio plays
+  // Start visualizer drawing
   function startVisualizer() {
+    if (isVisualizerActive) return;
+    isVisualizerActive = true;
+
     function draw() {
+      if (!isVisualizerActive) return;
       requestAnimationFrame(draw);
       analyser.getByteFrequencyData(dataArray);
 
@@ -478,14 +484,19 @@
     });
   }
 
-  // Initialize audio context on first click
+  // On first click, initialize everything
   document.body.addEventListener("click", () => {
-    if (!audioContext) {
-      setupAudioContext();
-    }
+    // Hide instruction
+    instruction.style.display = "none";
+
+    // Setup audio context
+    setupAudioContext();
+
+    // Start visualizer
+    startVisualizer();
+
+    // Start shuffle
     startShuffle();
-    startVisualizer(); // Start drawing immediately after audio plays
-    document.getElementById("instruction").style.display = "none";
   }, { once: true });
 
   document.getElementById("audio").addEventListener("ended", () => {
