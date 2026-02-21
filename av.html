@@ -285,6 +285,7 @@ body::before {
   </center>
 </div>
 <script>
+<script>
   (function titleMarquee() {
     let currentTitle = document.title;
     let newTitle = currentTitle.substring(1) + currentTitle.substring(0, 1);
@@ -378,7 +379,7 @@ body::before {
     "Music/young wild and free.mp3"
   ];
 
-let shuffled = [];
+ let shuffled = [];
   let currentIndex = 0;
 
   function cleanSongName(path) {
@@ -481,10 +482,10 @@ let shuffled = [];
     draw();
   });
 
-  // Make canvas fill bottom of page
+  // Resize canvas to fill bottom of page
   function resizeCanvas() {
     canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight * 0.2; // 20% of screen height
+    canvas.height = window.innerHeight * 0.2;
     canvas.style.position = 'absolute';
     canvas.style.bottom = '0';
     canvas.style.left = '0';
@@ -492,10 +493,14 @@ let shuffled = [];
     canvas.style.height = '20vh';
     canvas.style.borderTop = '2px solid rgba(255,140,0,0.5)';
     canvas.style.backgroundColor = 'rgba(0,0,0,0.3)';
+    canvas.style.zIndex = '9999';
   }
 
-  window.addEventListener('resize', resizeCanvas);
-  resizeCanvas(); // Initial resize
+  // Wait for DOM to load
+  document.addEventListener('DOMContentLoaded', () => {
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+  });
 </script>
   </body>
 </html>
