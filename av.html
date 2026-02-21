@@ -1,3 +1,6 @@
+<!--This message is directed to someone you know who you are but i know you're not reading this I'm sorry for how i treated you and im sorry that you had to deal with me at all if i had the option too i would make sure we never met not in a you ruined my life way but more of in a i didnt want to ever end up treating you that way type of thing i miss you but i no longer care that you dont respect me the way you used too I'm sorry c i really am-->
+<!-- https://sodaduhking1.github.io/IMG_5634.jpeg -->
+<!-- bye.. -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -10,472 +13,486 @@
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <style>
-
-
       body {
-  margin:0;
-  background:#0e0e0e;
-  font-family:Arial, sans-serif;
-}
+        margin:0;
+        background:#0e0e0e;
+        font-family:Arial, sans-serif;
+      }
 
+      #nowPlaying {
+        position: fixed;
+        top: 20px;
+        right: -420px;
+        width: 340px;
+        padding: 14px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        border: 1px solid rgba(255,255,255,0.8);
+        border-radius: 22px;
+        background: rgba(120,120,120,0.25);
+        backdrop-filter: blur(14px);
+        color: white;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+        transition: right 0.6s cubic-bezier(.25,.8,.25,1);
+        z-index: 9999;
+      }
 
-#nowPlaying {
-  position: fixed;
-  top: 20px;
-  right: -420px;
-  width: 340px;
-  padding: 14px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  border: 1px solid rgba(255,255,255,0.8);
-  border-radius: 22px;
-  background: rgba(120,120,120,0.25);
-  backdrop-filter: blur(14px);
-  color: white;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-  transition: right 0.6s cubic-bezier(.25,.8,.25,1);
-  z-index: 9999;
-}
+      #nowPlaying.show {
+        right: 20px;
+      }
 
+      #thumb {
+        width: 75px;
+        height: 75px;
+        border-radius: 16px;
+        object-fit: cover;
+        animation: spin 6s linear infinite;
+      }
 
-#nowPlaying.show {
-  right: 20px;
-}
+      @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
 
+      #text {
+        font-size: 15px;
+        font-weight: 500;
+      }
 
-#thumb {
-  width: 75px;
-  height: 75px;
-  border-radius: 16px;
-  object-fit: cover;
-  animation: spin 6s linear infinite;
-}
-
-
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-#text {
-  font-size: 15px;
-  font-weight: 500;
-}
       button {
-      display: block;
-      margin: 20px auto;
-      padding: 10px 20px;
-      font-size: 18px;
-      background-color: orange;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        font-size: 18px;
+        background-color: orange;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
 
-  fuck_you {
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-  }
+      fuck_you {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+      }
 
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  background: #0a0a0a;
-  font-family: monospace, monospace;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        background: #0a0a0a;
+        font-family: monospace, monospace;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
+      .crt {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        perspective: 2000px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
 
-.crt {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  perspective: 2000px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
+      .crt-content {
+        position: relative;
+        width: 1920px;   
+        height: 1080px;  
+        transform-origin: top left;
+        transform: rotateX(6deg) rotateY(-3deg) scale(1);
+        will-change: transform;
+      }
 
+      .crt-content::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: radial-gradient(ellipse at center,
+          rgba(255,255,255,0.02) 0%,
+          transparent 60%
+        );
+        transform: scaleX(1.06) scaleY(1.03);
+        mix-blend-mode: overlay;
+        z-index: 2;
+      }
 
-.crt-content {
-  position: relative;
-  width: 1920px;   
-  height: 1080px;  
-  transform-origin: top left;
-  
-  
-  transform: rotateX(6deg) rotateY(-3deg) scale(1);
-  
-  
-  will-change: transform;
-}
+      .crt::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: repeating-linear-gradient(
+          to bottom,
+          rgba(255,255,255,0.03) 0px,
+          rgba(255,255,255,0.03) 1px,
+          transparent 1px,
+          transparent 3px
+        );
+        mix-blend-mode: overlay;
+        z-index: 9999;
+      }
 
+      .crt-flicker {
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,0.06);
+        pointer-events: none;
+        animation: flicker 0.12s infinite;
+        z-index: 9998;
+      }
 
-.crt-content::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(ellipse at center,
-    rgba(255,255,255,0.02) 0%,
-    transparent 60%
-  );
-  transform: scaleX(1.06) scaleY(1.03);
-  mix-blend-mode: overlay;
-  z-index: 2;
-}
+      @keyframes flicker {
+        0% { opacity: 0.9; }
+        50% { opacity: 1; }
+        100% { opacity: 0.92; }
+      }
 
+      .crt-content > * {
+        position: relative;
+        z-index: 3;
+        animation: rgb-pop 2s infinite linear;
+      }
 
-.crt::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(255,255,255,0.03) 0px,
-    rgba(255,255,255,0.03) 1px,
-    transparent 1px,
-    transparent 3px
-  );
-  mix-blend-mode: overlay;
-  z-index: 9999;
-}
+      @keyframes rgb-pop {
+        0% { text-shadow: 2px 0 #ff0000, -2px 0 #00ff00, 0 2px #0000ff; }
+        25% { text-shadow: -2px 0 #ff0000, 2px 0 #00ff00, 0 -2px #0000ff; }
+        50% { text-shadow: 0 2px #ff0000, 0 -2px #00ff00, 2px 0 #0000ff; }
+        75% { text-shadow: -2px 2px #ff0000, 2px -2px #00ff00, -2px -2px #0000ff; }
+        100% { text-shadow: 2px 0 #ff0000, -2px 0 #00ff00, 0 2px #0000ff; }
+      }
 
+      h1, p, button {
+        text-shadow:
+          0 0 6px rgba(255,140,0,0.9),
+          0 0 12px rgba(255,140,0,0.5),
+          0 0 24px rgba(255,140,0,0.2);
+      }
 
-.crt-flicker {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.06);
-  pointer-events: none;
-  animation: flicker 0.12s infinite;
-  z-index: 9998;
-}
+      body::before {
+        content: "";
+        pointer-events: none;
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(
+          ellipse at center,
+          transparent 60%,
+          rgba(0,0,0,0.75) 100%
+        );
+        z-index: 9997;
+      }
 
-@keyframes flicker {
-  0% { opacity: 0.9; }
-  50% { opacity: 1; }
-  100% { opacity: 0.92; }
-}
+      .crt::before,
+      .crt::after {
+        border-radius: 10% / 5%; 
+      }
 
+      .crt-content {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform: perspective(1200px) rotateX(1deg) scale(1.02);
+        overflow: hidden;
+      }
 
-.crt-content > * {
-  position: relative;
-  z-index: 3;
-  animation: rgb-pop 2s infinite linear;
-}
+      .crt-streaks {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 9996; 
+        overflow: hidden;
+      }
 
-@keyframes rgb-pop {
-  0% { text-shadow: 2px 0 #ff0000, -2px 0 #00ff00, 0 2px #0000ff; }
-  25% { text-shadow: -2px 0 #ff0000, 2px 0 #00ff00, 0 -2px #0000ff; }
-  50% { text-shadow: 0 2px #ff0000, 0 -2px #00ff00, 2px 0 #0000ff; }
-  75% { text-shadow: -2px 2px #ff0000, 2px -2px #00ff00, -2px -2px #0000ff; }
-  100% { text-shadow: 2px 0 #ff0000, -2px 0 #00ff00, 0 2px #0000ff; }
-}
+      .crt-streaks span {
+        position: absolute;
+        bottom: -150%; 
+        width: 8px; 
+        height: 200%; 
+        background: rgba(255, 255, 255, 0.08); 
+        filter: blur(2px);
+        animation: streakUp 3s linear infinite;
+      }
 
+      .crt-streaks span:nth-child(1) { left: 10%; animation-delay: 0s; }
+      .crt-streaks span:nth-child(2) { left: 25%; animation-delay: 0.5s; }
+      .crt-streaks span:nth-child(3) { left: 40%; animation-delay: 1s; }
+      .crt-streaks span:nth-child(4) { left: 60%; animation-delay: 1.5s; }
+      .crt-streaks span:nth-child(5) { left: 75%; animation-delay: 2s; }
+      .crt-streaks span:nth-child(6) { left: 90%; animation-delay: 2.5s; }
 
-h1, p, button {
-  text-shadow:
-    0 0 6px rgba(255,140,0,0.9),
-    0 0 12px rgba(255,140,0,0.5),
-    0 0 24px rgba(255,140,0,0.2);
-}
+      @keyframes streakUp {
+        0% { transform: translateY(100%); opacity: 0.1; }
+        30% { opacity: 0.3; }
+        60% { opacity: 0.1; }
+        100% { transform: translateY(-100%); opacity: 0; }
+      }
 
+      #visualizer {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 800px;
+        height: 200px;
+        border: 2px solid rgba(255,140,0,0.5);
+        border-radius: 10px;
+        background: rgba(0,0,0,0.3);
+      }
 
-body::before {
-  content: "";
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(
-    ellipse at center,
-    transparent 60%,
-    rgba(0,0,0,0.75) 100%
-  );
-  z-index: 9997;
-}
+      #instruction {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        color: yellow;
+        font-family: monospace;
+        font-size: 14px;
+        animation: blink 1s infinite;
+        z-index: 9999;
+      }
 
- .crt::before,
-.crt::after {
-  border-radius: 10% / 5%; 
-}
-
-
-.crt-content {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transform: perspective(1200px) rotateX(1deg) scale(1.02);
-  overflow: hidden;
-}
-
-.crt-streaks {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9996; 
-  overflow: hidden;
-}
-
-
-.crt-streaks span {
-  position: absolute;
-  bottom: -150%; 
-  width: 8px; 
-  height: 200%; 
-  background: rgba(255, 255, 255, 0.08); 
-  filter: blur(2px);
-  animation: streakUp 3s linear infinite;
-}
-
-
-.crt-streaks span:nth-child(1) { left: 10%; animation-delay: 0s; }
-.crt-streaks span:nth-child(2) { left: 25%; animation-delay: 0.5s; }
-.crt-streaks span:nth-child(3) { left: 40%; animation-delay: 1s; }
-.crt-streaks span:nth-child(4) { left: 60%; animation-delay: 1.5s; }
-.crt-streaks span:nth-child(5) { left: 75%; animation-delay: 2s; }
-.crt-streaks span:nth-child(6) { left: 90%; animation-delay: 2.5s; }
-
-@keyframes streakUp {
-  0% { transform: translateY(100%); opacity: 0.1; }
-  30% { opacity: 0.3; }
-  60% { opacity: 0.1; }
-  100% { transform: translateY(-100%); opacity: 0; }
-}
-
+      @keyframes blink {
+        0% { opacity: 1; }
+        50% { opacity: 0.3; }
+        100% { opacity: 1; }
+      }
     </style>
-    
-
-    
   </head>
   <body class="crt" style="background-color:black;">
-<div class="crt-content">
-  <div class="crt-flicker">
-    <div class="crt-streaks">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
+    <div class="crt-content">
+      <div class="crt-flicker">
+        <div class="crt-streaks">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <div id="nowPlaying">
+        <img id="thumb">
+        <div id="text">Playing</div>
+      </div>
+
+      <audio id="audio"></audio>
+
+      <center>
+        <canvas id="visualizer" width="800" height="200"></canvas>
+      </center>
+
+      <div id="instruction">&gt; click anywhere on the page to activate le tunes...</div>
     </div>
-  </div>
 
-  <div id="nowPlaying">
-    <img id="thumb">
-    <div id="text">Playing</div>
-  </div>
+    <script>
+      (function titleMarquee() {
+        let currentTitle = document.title;
+        let newTitle = currentTitle.substring(1) + currentTitle.substring(0, 1);
+        document.title = newTitle;
+        setTimeout(titleMarquee, 200);
+      })();
 
-  <audio id="audio"></audio>
+      const songs = [
+        "Music/Alligator Skin Boots - Mcafferty.mp3",
+        "Music/Anesthesia.mp3",
+        "Music/banana pie.mp3",
+        "Music/Beach Weather - sex, drugs, etc. (Lyrics).mp3",
+        "Music/Bleed 4.mp3",
+        "Music/blink-182 - Adam's Song (Lyrics).mp3",
+        "Music/blink 182 - All The Small Things (Lyrics) 4.mp3",
+        "Music/blink-182 - I Miss You (Lyrics).mp3",
+        "Music/Corbon Amodio - Lucy (Lyrics).mp3",
+        "Music/Coyote Theory - This Side of Paradise (Lyric Video) 4.mp3",
+        "Music/did you want him instead_.mp3",
+        "Music/EKKSTACY - i walk this earth all by myself (Official Visualizer) 4.mp3",
+        "Music/Eminem - Deja Vu (Lyrics).mp3",
+        "Music/Eminem - Love The Way You Lie ft. Rihanna 4.mp3",
+        "Music/Eminem - The Monster (Lyrics) ft. Rihanna 4.mp3",
+        "Music/Fine ▪︎Lemon Demon (Lyrics) 4.mp3",
+        "Music/Frank Ocean - White Ferrari (Lyrics) 4.mp3",
+        "Music/GENOCIDE 4.mp3",
+        "Music/Gigi Perez - Sailor Song 4.mp3",
+        "Music/Girlfriends - New Computers.mp3",
+        "Music/i exist i exist i exist _ flatsound _ lyric video.mp3",
+        "Music/i feel sick.mp3",
+        "Music/i love u so much.mp3",
+        "Music/i still want u.mp3",
+        "Music/juju - Wasted Summers (Lyrics) 4.mp3",
+        "Music/Jungle - Back On 74 (Lyrics) 4.mp3",
+        "Music/Kendrick Lamar - meet the grahams (Lyrics) (Drake Diss).mp3",
+        "Music/kms.mp3",
+        "Music/KoruSe, mzmff - Two Different Worlds 4.mp3",
+        "Music/kurffew - i dont wna cry (haste) (official audio) 4.mp3",
+        "Music/Last Night.mp3",
+        "Music/Lil Darkie - do you love me (Lyrics).mp3",
+        "Music/Lil Darkie - HAHA (Lyrics).mp3",
+        "Music/Lil Darkie - HOLOCAUST.mp3",
+        "Music/Lil Peep - nuts (feat. rainy bear) (Official Audio) 4.mp3",
+        "Music/Lit - My Own Worst Enemy (Lyrics).mp3",
+        "Music/Maccfferty - bottom (lyrics).mp3",
+        "Music/memory.mp3",
+        "Music/migraine 4.mp3",
+        "Music/Nope your too late i already died 4.mp3",
+        "Music/notion.mp3",
+        "Music/Oasis - Wonderwall (Lyrics) 4.mp3",
+        "Music/overtonight - spiral song (official audio).mp3",
+        "Music/overtonight - twenty four (official audio).mp3",
+        "Music/party 4.mp3",
+        "Music/Pinegrove - Need 2 (official lyric video) 4.mp3",
+        "Music/Radiohead - Creep (Lyrics) 4.mp3",
+        "Music/Radiohead - Let Down 4.mp3",
+        "Music/Radiohead - No Surprises (Lyrics) 4.mp3",
+        "Music/Rainbow Kitten Surprise - It's Called_ Freefall (Lyrics) 4.mp3",
+        "Music/Red Hot Chili Peppers - Scar Tissue (Lyrics) 4.mp3",
+        "Music/s0rrow - unhappy (lyrics).mp3",
+        "Music/Samia - Pool (Stripped).mp3",
+        "Music/Scott Pilgrim vs. My GPA 4.mp3",
+        "Music/shotgun..mp3",
+        "Music/small.mp3",
+        "Music/Suicide Letter.mp3",
+        "Music/Sylendanna_Nice2KnowYa! (Official Audio - Free Download).mp3",
+        "Music/System of a Down - Lonely Day 4.mp3",
+        "Music/Tell Me Lover, Do You Love Me_ 4.mp3",
+        "Music/the adults are talking.mp3",
+        "Music/The Cure - Boys Don't Cry (Lyrics) 4.mp3",
+        "Music/The Fray - How to Save a Life (Lyrics) 4.mp3",
+        "Music/The Killers - Mr. Brightside (Lyrics).mp3",
+        "Music/The Marías - No One Noticed 4.mp3",
+        "Music/The Neighbourhood - Sweater Weather (Lyrics) 4.mp3",
+        "Music/The Walters -- I Love You So 4.mp3",
+        "Music/through (Remastered).mp3",
+        "Music/Tom Rosenthal - Lights Are On (Lyrics) 4.mp3",
+        "Music/Treehouse - Alex G (Lyrics) 4.mp3",
+        "Music/Trees II 4.mp3",
+        "Music/Trippie Redd Performs _Wish_ With Live Orchestra _ Audiomack Trap Symphony 4.mp3",
+        "Music/TV Girl - Cigarettes out the Window (Lyrics) 4.mp3",
+        "Music/TV Girl - For You 4.mp3",
+        "Music/TV Girl - It Almost Worked.mp3",
+        "Music/Tv Girl -Loving Machine.mp3",
+        "Music/Tv Girl - Not Allowed 4.mp3",
+        "Music/Wifiskeleton - My Twenty first reason _ Lyric Video  #llws.mp3",
+        "Music/Wifiskeleton - puking out my guts lol.mp3",
+        "Music/window.mp3",
+        "Music/would u notice.mp3",
+        "Music/XXXTENTACION & YE - True Love (Official Audio) 4.mp3",
+        "Music/young wild and free.mp3"
+      ];
 
-  <center>
-    <canvas id="visualizer" width="800" height="200"></canvas>
-  </center>
-</div>
-<script>
-(function titleMarquee() {
-    let currentTitle = document.title;
-    let newTitle = currentTitle.substring(1) + currentTitle.substring(0, 1);
-    document.title = newTitle;
-    setTimeout(titleMarquee, 200);
-})();
+      let shuffled = [];
+      let currentIndex = 0;
 
-const songs = [
-"Music/Alligator Skin Boots - Mcafferty.mp3",
-"Music/Anesthesia.mp3",
-"Music/banana pie.mp3",
-"Music/Beach Weather - sex, drugs, etc. (Lyrics).mp3",
-"Music/Bleed 4.mp3",
-"Music/blink-182 - Adam's Song (Lyrics).mp3",
-"Music/blink 182 - All The Small Things (Lyrics) 4.mp3",
-"Music/blink-182 - I Miss You (Lyrics).mp3",
-"Music/Corbon Amodio - Lucy (Lyrics).mp3",
-"Music/Coyote Theory - This Side of Paradise (Lyric Video) 4.mp3",
-"Music/did you want him instead_.mp3",
-"Music/EKKSTACY - i walk this earth all by myself (Official Visualizer) 4.mp3",
-"Music/Eminem - Deja Vu (Lyrics).mp3",
-"Music/Eminem - Love The Way You Lie ft. Rihanna 4.mp3",
-"Music/Eminem - The Monster (Lyrics) ft. Rihanna 4.mp3",
-"Music/Fine ▪︎Lemon Demon (Lyrics) 4.mp3",
-"Music/Frank Ocean - White Ferrari (Lyrics) 4.mp3",
-"Music/GENOCIDE 4.mp3",
-"Music/Gigi Perez - Sailor Song 4.mp3",
-"Music/Girlfriends - New Computers.mp3",
-"Music/i exist i exist i exist _ flatsound _ lyric video.mp3",
-"Music/i feel sick.mp3",
-"Music/i love u so much.mp3",
-"Music/i still want u.mp3",
-"Music/juju - Wasted Summers (Lyrics) 4.mp3",
-"Music/Jungle - Back On 74 (Lyrics) 4.mp3",
-"Music/Kendrick Lamar - meet the grahams (Lyrics) (Drake Diss).mp3",
-"Music/kms.mp3",
-"Music/KoruSe, mzmff - Two Different Worlds 4.mp3",
-"Music/kurffew - i dont wna cry (haste) (official audio) 4.mp3",
-"Music/Last Night.mp3",
-"Music/Lil Darkie - do you love me (Lyrics).mp3",
-"Music/Lil Darkie - HAHA (Lyrics).mp3",
-"Music/Lil Darkie - HOLOCAUST.mp3",
-"Music/Lil Peep - nuts (feat. rainy bear) (Official Audio) 4.mp3",
-"Music/Lit - My Own Worst Enemy (Lyrics).mp3",
-"Music/Maccfferty - bottom (lyrics).mp3",
-"Music/memory.mp3",
-"Music/migraine 4.mp3",
-"Music/Nope your too late i already died 4.mp3",
-"Music/notion.mp3",
-"Music/Oasis - Wonderwall (Lyrics) 4.mp3",
-"Music/overtonight - spiral song (official audio).mp3",
-"Music/overtonight - twenty four (official audio).mp3",
-"Music/party 4.mp3",
-"Music/Pinegrove - Need 2 (official lyric video) 4.mp3",
-"Music/Radiohead - Creep (Lyrics) 4.mp3",
-"Music/Radiohead - Let Down 4.mp3",
-"Music/Radiohead - No Surprises (Lyrics) 4.mp3",
-"Music/Rainbow Kitten Surprise - It's Called_ Freefall (Lyrics) 4.mp3",
-"Music/Red Hot Chili Peppers - Scar Tissue (Lyrics) 4.mp3",
-"Music/s0rrow - unhappy (lyrics).mp3",
-"Music/Samia - Pool (Stripped).mp3",
-"Music/Scott Pilgrim vs. My GPA 4.mp3",
-"Music/shotgun..mp3",
-"Music/small.mp3",
-"Music/Suicide Letter.mp3",
-"Music/Sylendanna_Nice2KnowYa! (Official Audio - Free Download).mp3",
-"Music/System of a Down - Lonely Day 4.mp3",
-"Music/Tell Me Lover, Do You Love Me_ 4.mp3",
-"Music/the adults are talking.mp3",
-"Music/The Cure - Boys Don't Cry (Lyrics) 4.mp3",
-"Music/The Fray - How to Save a Life (Lyrics) 4.mp3",
-"Music/The Killers - Mr. Brightside (Lyrics).mp3",
-"Music/The Marías - No One Noticed 4.mp3",
-"Music/The Neighbourhood - Sweater Weather (Lyrics) 4.mp3",
-"Music/The Walters -- I Love You So 4.mp3",
-"Music/through (Remastered).mp3",
-"Music/Tom Rosenthal - Lights Are On (Lyrics) 4.mp3",
-"Music/Treehouse - Alex G (Lyrics) 4.mp3",
-"Music/Trees II 4.mp3",
-"Music/Trippie Redd Performs _Wish_ With Live Orchestra _ Audiomack Trap Symphony 4.mp3",
-"Music/TV Girl - Cigarettes out the Window (Lyrics) 4.mp3",
-"Music/TV Girl - For You 4.mp3",
-"Music/TV Girl - It Almost Worked.mp3",
-"Music/Tv Girl -Loving Machine.mp3",
-"Music/Tv Girl - Not Allowed 4.mp3",
-"Music/Wifiskeleton - My Twenty first reason _ Lyric Video  #llws.mp3",
-"Music/Wifiskeleton - puking out my guts lol.mp3",
-"Music/window.mp3",
-"Music/would u notice.mp3",
-"Music/XXXTENTACION & YE - True Love (Official Audio) 4.mp3",
-"Music/young wild and free.mp3"
-];
+      function cleanSongName(path) {
+        let name = path.split("/").pop().replace(".mp3", "");
 
-let shuffled = [];
-let currentIndex = 0;
+        name = name.replace(/\(.*?lyrics.*?\)/gi, "");
+        name = name.replace(/\(.*?official.*?\)/gi, "");
+        name = name.replace(/\(.*?visualizer.*?\)/gi, "");
+        name = name.replace(/\(.*?audio.*?\)/gi, "");
+        name = name.replace(/\(.*?lyric video.*?\)/gi, "");
+        name = name.replace(/\s4$/g, "");
+        name = name.replace(/_/g, " ");
+        name = name.replace(/\s+/g, " ").trim();
 
-function cleanSongName(path) {
-  let name = path.split("/").pop().replace(".mp3", "");
+        return name;
+      }
 
-  name = name.replace(/\(.*?lyrics.*?\)/gi, "");
-  name = name.replace(/\(.*?official.*?\)/gi, "");
-  name = name.replace(/\(.*?visualizer.*?\)/gi, "");
-  name = name.replace(/\(.*?audio.*?\)/gi, "");
-  name = name.replace(/\(.*?lyric video.*?\)/gi, "");
-  name = name.replace(/\s4$/g, "");
-  name = name.replace(/_/g, " ");
-  name = name.replace(/\s+/g, " ").trim();
+      function shuffle(array) {
+        return array.sort(() => Math.random() - 0.5);
+      }
 
-  return name;
-}
+      function startShuffle() {
+        shuffled = shuffle([...songs]);
+        currentIndex = 0;
+        playNext();
+      }
 
-function shuffle(array) {
-  return array.sort(() => Math.random() - 0.5);
-}
+      function playNext() {
+        if (currentIndex >= shuffled.length) {
+          startShuffle();
+          return;
+        }
 
-function startShuffle() {
-  shuffled = shuffle([...songs]);
-  currentIndex = 0;
-  playNext();
-}
+        const songPath = shuffled[currentIndex];
+        const audio = document.getElementById("audio");
+        const nowPlaying = document.getElementById("nowPlaying");
+        const text = document.getElementById("text");
+        const thumb = document.getElementById("thumb");
 
-function playNext() {
-  if (currentIndex >= shuffled.length) {
-    startShuffle();
-    return;
-  }
+        audio.src = songPath;
 
-  const songPath = shuffled[currentIndex];
-  const audio = document.getElementById("audio");
-  const nowPlaying = document.getElementById("nowPlaying");
-  const text = document.getElementById("text");
-  const thumb = document.getElementById("thumb");
+        const cleanName = cleanSongName(songPath);
+        text.textContent = "Playing " + cleanName;
 
-  audio.src = songPath;
+        thumb.src = "audio-speakers.png";
 
-  const cleanName = cleanSongName(songPath);
-  text.textContent = "Playing " + cleanName;
+        nowPlaying.classList.add("show");
+        setTimeout(() => {
+          nowPlaying.classList.remove("show");
+        }, 4000);
 
-  thumb.src = "audio-speakers.png";
+        audio.play();
+      }
 
-  nowPlaying.classList.add("show");
-  setTimeout(() => {
-    nowPlaying.classList.remove("show");
-  }, 4000);
+      document.getElementById("audio").addEventListener("ended", () => {
+        currentIndex++;
+        playNext();
+      });
 
-  audio.play();
-}
+      document.body.addEventListener("click", () => {
+        startShuffle();
+      }, { once: true });
 
-document.getElementById("audio").addEventListener("ended", () => {
-  currentIndex++;
-  playNext();
-});
+      
+      const audio = document.getElementById('audio');
+      const canvas = document.getElementById('visualizer');
+      const ctx = canvas.getContext('2d');
 
-document.body.addEventListener("click", () => {
-  startShuffle();
-}, { once: true });
+      let analyser, bufferLength, dataArray;
 
-// Add Cava-style visualizer
-const audio = document.getElementById('audio');
-const canvas = document.getElementById('visualizer');
-const ctx = canvas.getContext('2d');
+      audio.addEventListener('play', () => {
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const source = audioContext.createMediaElementSource(audio);
+        analyser = audioContext.createAnalyser();
+        source.connect(analyser);
+        analyser.connect(audioContext.destination);
+        analyser.fftSize = 256;
+        bufferLength = analyser.frequencyBinCount;
+        dataArray = new Uint8Array(bufferLength);
 
-let analyser, bufferLength, dataArray;
+        function draw() {
+          requestAnimationFrame(draw);
+          analyser.getByteFrequencyData(dataArray);
 
-audio.addEventListener('play', () => {
-  const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-  const source = audioContext.createMediaElementSource(audio);
-  analyser = audioContext.createAnalyser();
-  source.connect(analyser);
-  analyser.connect(audioContext.destination);
-  analyser.fftSize = 256;
-  bufferLength = analyser.frequencyBinCount;
-  dataArray = new Uint8Array(bufferLength);
+          ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  function draw() {
-    requestAnimationFrame(draw);
-    analyser.getByteFrequencyData(dataArray);
+          const barWidth = (canvas.width / bufferLength) * 2.5;
+          let x = 0;
 
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+          for (let i = 0; i < bufferLength; i++) {
+            const barHeight = dataArray[i] / 2;
+            const color = `hsl(30, 100%, 50%)`;
+            ctx.fillStyle = color;
+            ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+            x += barWidth + 1;
+          }
+        }
+        draw();
+      });
 
-    const barWidth = (canvas.width / bufferLength) * 2.5;
-    let x = 0;
-
-    for (let i = 0; i < bufferLength; i++) {
-      const barHeight = dataArray[i] / 2;
-      const color = `hsl(30, 100%, 50%)`; // Orange hue
-      ctx.fillStyle = color;
-      ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
-      x += barWidth + 1;
-    }
-  }
-  draw();
-});
-</script>
+      
+      document.body.addEventListener("click", () => {
+        const instruction = document.getElementById("instruction");
+        instruction.style.display = "none";
+      }, { once: true });
+    </script>
   </body>
 </html>
