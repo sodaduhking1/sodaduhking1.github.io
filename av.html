@@ -440,7 +440,7 @@ body::before {
     startShuffle();
   }, { once: true });
 
-  // Add Cava-style visualizer
+  // Add Cava-style visualizer with bass emphasis
   const audio = document.getElementById('audio');
   const canvas = document.getElementById('visualizer');
   const ctx = canvas.getContext('2d');
@@ -461,18 +461,35 @@ body::before {
       requestAnimationFrame(draw);
       analyser.getByteFrequencyData(dataArray);
 
+      // Use only low frequencies (bass) for visualizer
+      const bassBins = 32; // Use first 32 bins (0–100 Hz approx)
+      const barWidth = (canvas.width / bassBins) * 2.5;
+      let x = 0;
+
+      // Calculate average bass level
+      let bassSum = 0;
+      for (let i = 0; i < bassBins; i++) {
+        bassSum += dataArray[i];
+      }
+      const avgBass = bassSum / bassBins;
+
+      // Draw a single bar for bass (or multiple)
+      const barHeight = avgBass * 2; // Amplify bass
+      const color = `hsl(30, 100%, 50%)`; // Orange
+
       ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      const barWidth = (canvas.width / bufferLength) * 2.5;
-      let x = 0;
+      // Draw bass bar
+      ctx.fillStyle = color;
+      ctx.fillRect(x, canvas.height - barHeight, barWidth * bassBins, barHeight);
 
-      for (let i = 0; i < bufferLength; i++) {
+      // Optional: Add small visual feedback for mid/high frequencies
+      for (let i = bassBins; i < bufferLength; i++) {
         const barHeight = dataArray[i] / 2;
-        const color = `hsl(30, 100%, 50%)`; // Orange
+        const color = `hsl(30, 100%, 50%)`;
         ctx.fillStyle = color;
-        ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
-        x += barWidth + 1;
+        ctx.fillRect(x + (i - bassBins) * barWidth, canvas.height - barHeight, barWidth, barHeight);
       }
     }
     draw();
