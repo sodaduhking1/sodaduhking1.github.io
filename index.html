@@ -74,17 +74,19 @@
       cursor: pointer;
     }
 
-  fuck_you {
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-  }
+  .fuck_you, .av {
+  position: absolute;
+  bottom: 0px;
+  z-index: 9999;
+}
 
-  av {
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-  }
+.fuck_you {
+  left: 0px;
+}
+
+.av {
+  right: 0px;
+}
 
 html, body {
   margin: 0;
