@@ -20,6 +20,20 @@
   font-family:Arial, sans-serif;
 }
 
+#blinking-text {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    color: yellow;
+    font-weight: bold;
+    animation: blink 1s infinite;
+    z-index: 9999;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
 #nowPlaying {
   position: fixed;
   top: 20px;
@@ -246,7 +260,7 @@ body::before {
       <span></span>
     </div>
   </div>
-
+<div id="blinking-text">&gt; click to access le awesome site...</div>
   <div id="nowPlaying">
     <img id="thumb">
     <div id="text">Playing</div>
@@ -265,6 +279,10 @@ body::before {
     document.title = newTitle;
     setTimeout(titleMarquee, 200);
   })();
+
+  document.addEventListener('click', function() {
+    document.getElementById('blinking-text').style.display = 'none';
+  });
 
   function resizeCanvas() {
     const canvas = document.getElementById('visualizer');
