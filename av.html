@@ -285,7 +285,6 @@ body::before {
   </center>
 </div>
 <script>
-<script>
   (function titleMarquee() {
     let currentTitle = document.title;
     let newTitle = currentTitle.substring(1) + currentTitle.substring(0, 1);
@@ -441,7 +440,7 @@ body::before {
     startShuffle();
   }, { once: true });
 
-  // Add Cava-style visualizer at bottom, full width
+  // Add Cava-style visualizer with multiple vertical bars
   const audio = document.getElementById('audio');
   const canvas = document.getElementById('visualizer');
   const ctx = canvas.getContext('2d');
@@ -462,15 +461,12 @@ body::before {
       requestAnimationFrame(draw);
       analyser.getByteFrequencyData(dataArray);
 
-      // Clear canvas
       ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Calculate bar width based on canvas width
       const barWidth = (canvas.width / bufferLength) * 2.5;
       let x = 0;
 
-      // Draw each bar
       for (let i = 0; i < bufferLength; i++) {
         const barHeight = dataArray[i] / 2;
         const color = `hsl(30, 100%, 50%)`; // Orange
@@ -480,26 +476,6 @@ body::before {
       }
     }
     draw();
-  });
-
-  // Resize canvas to fill bottom of page
-  function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight * 0.2;
-    canvas.style.position = 'absolute';
-    canvas.style.bottom = '0';
-    canvas.style.left = '0';
-    canvas.style.width = '100%';
-    canvas.style.height = '20vh';
-    canvas.style.borderTop = '2px solid rgba(255,140,0,0.5)';
-    canvas.style.backgroundColor = 'rgba(0,0,0,0.3)';
-    canvas.style.zIndex = '9999';
-  }
-
-  // Wait for DOM to load
-  document.addEventListener('DOMContentLoaded', () => {
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
   });
 </script>
   </body>
