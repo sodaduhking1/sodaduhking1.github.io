@@ -63,12 +63,20 @@
   font-weight: 500;
 }
 
+
+
+p a {
+  position: relative;
+  z-index: 10000; 
+  pointer-events: auto !important;
+  cursor: pointer;
+}
+
 .fuck_you, .av {
     display: block;
     margin: 15px auto;
     text-decoration: none;
     width: fit-content;
-    /* Ensure the container isn't blocking clicks */
     position: relative;
     z-index: 100; 
   }
