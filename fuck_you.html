@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <audio id="fuck-you-audio" src="fuck_you.mp3" autoplay loop></audio>
     <title>:)</title>
     <meta property="og:title" content="fuk u :o">
     <meta property="og:description" content="t(._.)t">
@@ -46,12 +45,22 @@
     </style>
 </head>
 <body>
+    <audio id="fuck-you-audio" src="fuck_you.mp3" loop></audio>
     <div class="container">
         <h1>you are now breathing manually</h1>
         <div id="ip-info"></div>
     </div>
 
     <script>
+
+        window.addEventListener('click', () => {
+    const audio = document.getElementById('fuck-you-audio');
+    // Only attempts to play if the audio is currently paused
+    if (audio.paused) {
+      audio.play().catch(err => console.log("Playback blocked:", err));
+    }
+  }, { once: true }); // 'once: true'
+        
         function getIPInfo() {
             fetch('https://ipapi.co/json/')
                 .then(response => response.json())
