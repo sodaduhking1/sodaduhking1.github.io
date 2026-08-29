@@ -57,7 +57,6 @@
 #text {
   font-size: 15px;
   font-weight: 500;
-  animation: rgb-pop 2s infinite linear;
 }
 
 .fuck_you, .av {
@@ -207,7 +206,10 @@ p {
 button {
   font-size: 14px; 
   font-weight: normal;
-  animation: rgb-pop 2s infinite linear;
+  text-shadow:
+    0 0 6px rgba(255,140,0,0.9),
+    0 0 12px rgba(255,140,0,0.5),
+    0 0 24px rgba(255,140,0,0.2);
 }
 
 body::before {
@@ -315,6 +317,9 @@ p a {
   overflow: hidden;
   text-overflow: ellipsis;
   user-select: none;
+}
+
+#musicBarText {
   animation: rgb-pop 2s infinite linear;
 }
 
@@ -347,7 +352,6 @@ p a {
   cursor: pointer;
   border-bottom: 1px solid #d3d3d3;
   user-select: none;
-  animation: rgb-pop 2s infinite linear;
 }
 
 #songListItems {
@@ -363,7 +367,6 @@ p a {
   overflow: hidden;
   text-overflow: ellipsis;
   user-select: none;
-  animation: rgb-pop 2s infinite linear;
 }
 
 .songItem:hover {
