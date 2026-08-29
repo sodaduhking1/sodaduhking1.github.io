@@ -624,6 +624,8 @@ musicBar.addEventListener("click", (e) => {
   if (shuffled.length === 0) {
     shuffled = shuffle([...songs]);
     buildSongList();
+  } else if (document.getElementById("songListItems").children.length === 0) {
+    buildSongList();
   }
   songListContainer.classList.toggle("active");
 });
