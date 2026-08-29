@@ -17,7 +17,6 @@
   font-family:Arial, sans-serif;
 }
 
-
 #nowPlaying {
   position: fixed;
   top: 20px;
@@ -37,11 +36,9 @@
   z-index: 9999;
 }
 
-
 #nowPlaying.show {
   right: 20px;
 }
-
 
 #thumb {
   width: 75px;
@@ -50,7 +47,6 @@
   object-fit: cover;
   animation: spin 6s linear infinite;
 }
-
 
 @keyframes spin {
   from { transform: rotate(0deg); }
@@ -103,7 +99,6 @@ html, body {
   align-items: center;
 }
 
-
 .crt {
   position: relative;
   width: 100%;
@@ -115,20 +110,14 @@ html, body {
   overflow: hidden;
 }
 
-
 .crt-content {
   position: relative;
   width: 1920px;   
   height: 1080px;  
   transform-origin: top left;
-  
-  
   transform: rotateX(6deg) rotateY(-3deg) scale(1);
-  
-  
   will-change: transform;
 }
-
 
 .crt-content::before {
   content: "";
@@ -143,7 +132,6 @@ html, body {
   mix-blend-mode: overlay;
   z-index: 2;
 }
-
 
 .crt::after {
   content: "";
@@ -162,7 +150,6 @@ html, body {
   z-index: 9999;
 }
 
-
 .crt-flicker {
   position: absolute;
   inset: 0;
@@ -179,7 +166,6 @@ html, body {
   100% { opacity: 0.92; }
 }
 
-
 .crt-content > * {
   position: relative;
   z-index: 3;
@@ -193,7 +179,6 @@ html, body {
   75% { text-shadow: -2px 2px #ff0000, 2px -2px #00ff00, -2px -2px #0000ff; }
   100% { text-shadow: 2px 0 #ff0000, -2px 0 #00ff00, 0 2px #0000ff; }
 }
-
 
 h1 {
   font-size: clamp(18px, 4vw, 32px);
@@ -225,7 +210,6 @@ button {
     0 0 24px rgba(255,140,0,0.2);
 }
 
-
 body::before {
   content: "";
   pointer-events: none;
@@ -244,7 +228,6 @@ body::before {
   border-radius: 10% / 5%; 
 }
 
-
 .crt-content {
   position: relative;
   width: 100%;
@@ -261,7 +244,6 @@ body::before {
   overflow: hidden;
 }
 
-
 .crt-streaks span {
   position: absolute;
   bottom: -150%; 
@@ -271,7 +253,6 @@ body::before {
   filter: blur(2px);
   animation: streakUp 3s linear infinite;
 }
-
 
 .crt-streaks span:nth-child(1) { left: 10%; animation-delay: 0s; }
 .crt-streaks span:nth-child(2) { left: 25%; animation-delay: 0.5s; }
@@ -287,16 +268,103 @@ body::before {
   100% { transform: translateY(-100%); opacity: 0; }
 }
 
-
 p a {
   position: relative;
   z-index: 1000;
   pointer-events: auto;
 }
 
-</style>    
+#musicBarContainer {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  z-index: 10000;
+  transition: transform 0.5s ease;
+}
 
-    
+#musicBarContainer.hidden {
+  transform: translateX(calc(100% - 32px));
+}
+
+#hideToggleBtn {
+  width: 24px;
+  height: 36px;
+  padding: 0;
+  margin: 0;
+  background-color: orange;
+  color: black;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  cursor: pointer;
+  font-weight: bold;
+  line-height: 36px;
+  text-align: center;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+#musicBar {
+  background-color: black;
+  border: 1px solid #d3d3d3;
+  color: orange;
+  height: 36px;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+#songListContainer {
+  position: fixed;
+  bottom: 65px;
+  right: 20px;
+  width: 300px;
+  max-height: 400px;
+  background-color: black;
+  border: 1px solid #d3d3d3;
+  z-index: 10001;
+  display: none;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+#songListContainer.active {
+  display: flex;
+}
+
+#songListHeader {
+  background-color: #1a1a1a;
+  color: orange;
+  padding: 10px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  border-bottom: 1px solid #d3d3d3;
+}
+
+#songListItems {
+  overflow-y: auto;
+  max-height: 350px;
+}
+
+.songItem {
+  padding: 8px 12px;
+  color: orange;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.songItem:hover {
+  background-color: #222;
+}
+</style>    
   </head>
   <body class="crt" style="background-color:black;">
      <div class="crt-content">
@@ -310,13 +378,24 @@ p a {
   <span></span>
 </div>
 
-  
     <div id="nowPlaying">
   <img id="thumb">
   <div id="text">Playing</div>
 </div>
 
 <audio id="audio"></audio>
+
+<div id="musicBarContainer">
+  <button id="hideToggleBtn">&gt;</button>
+  <div id="musicBar">
+    <span id="musicBarText">Select a song</span>
+  </div>
+</div>
+
+<div id="songListContainer">
+  <div id="songListHeader">▲ Collapse List ▲</div>
+  <div id="songListItems"></div>
+</div>
     
     <center>
       <img src="loop.png"></img>
@@ -436,14 +515,12 @@ const songs = [
 "Music/young wild and free.mp3"
 ];
 
-
 let shuffled = [];
 let currentIndex = 0;
-
+let hideNotificationTimeout = null;
 
 function cleanSongName(path) {
   let name = path.split("/").pop().replace(".mp3", "");
-
   name = name.replace(/\(.*?lyrics.*?\)/gi, "");
   name = name.replace(/\(.*?official.*?\)/gi, "");
   name = name.replace(/\(.*?visualizer.*?\)/gi, "");
@@ -452,56 +529,103 @@ function cleanSongName(path) {
   name = name.replace(/\s4$/g, "");
   name = name.replace(/_/g, " ");
   name = name.replace(/\s+/g, " ").trim();
-
   return name;
 }
-
 
 function shuffle(array) {
   return array.sort(() => Math.random() - 0.5);
 }
 
-function startShuffle() {
-  shuffled = shuffle([...songs]);
-  currentIndex = 0;
-  playNext();
-}
-
-function playNext() {
-  if (currentIndex >= shuffled.length) {
-    startShuffle();
-    return;
-  }
-
+function playSongByIndex(index) {
+  currentIndex = index;
   const songPath = shuffled[currentIndex];
   const audio = document.getElementById("audio");
+  const musicBarText = document.getElementById("musicBarText");
   const nowPlaying = document.getElementById("nowPlaying");
   const text = document.getElementById("text");
   const thumb = document.getElementById("thumb");
 
   audio.src = songPath;
-
   const cleanName = cleanSongName(songPath);
+  
+  musicBarText.textContent = cleanName;
+
   text.textContent = "Playing " + cleanName;
-
- 
   thumb.src = "audio-speakers.png";
-
+  
   nowPlaying.classList.add("show");
-  setTimeout(() => {
+  if (hideNotificationTimeout) clearTimeout(hideNotificationTimeout);
+  hideNotificationTimeout = setTimeout(() => {
     nowPlaying.classList.remove("show");
   }, 4000);
 
   audio.play();
 }
 
+function startShuffle() {
+  shuffled = shuffle([...songs]);
+  buildSongList();
+  playSongByIndex(0);
+}
+
+function playNext() {
+  if (currentIndex + 1 >= shuffled.length) {
+    startShuffle();
+    return;
+  }
+  playSongByIndex(currentIndex + 1);
+}
+
+function buildSongList() {
+  const listItemsContainer = document.getElementById("songListItems");
+  listItemsContainer.innerHTML = "";
+  shuffled.forEach((songPath, idx) => {
+    const item = document.createElement("div");
+    item.className = "songItem";
+    item.textContent = cleanSongName(songPath);
+    item.addEventListener("click", (e) => {
+      e.stopPropagation();
+      playSongByIndex(idx);
+    });
+    listItemsContainer.appendChild(item);
+  });
+}
+
 document.getElementById("audio").addEventListener("ended", () => {
-  currentIndex++;
   playNext();
 });
 
+const hideToggleBtn = document.getElementById("hideToggleBtn");
+const musicBarContainer = document.getElementById("musicBarContainer");
+const musicBar = document.getElementById("musicBar");
+const songListContainer = document.getElementById("songListContainer");
+const songListHeader = document.getElementById("songListHeader");
+
+hideToggleBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  musicBarContainer.classList.toggle("hidden");
+  if (musicBarContainer.classList.contains("hidden")) {
+    hideToggleBtn.textContent = "<";
+    songListContainer.classList.remove("active");
+  } else {
+    hideToggleBtn.textContent = ">";
+  }
+});
+
+musicBar.addEventListener("click", (e) => {
+  e.stopPropagation();
+  songListContainer.classList.toggle("active");
+});
+
+songListHeader.addEventListener("click", (e) => {
+  e.stopPropagation();
+  songListContainer.classList.remove("active");
+});
+
 document.body.addEventListener("click", () => {
-  startShuffle();
+  if (shuffled.length === 0) {
+    startShuffle();
+  }
 }, { once: true });
 </script>
   </body>
