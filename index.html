@@ -33,7 +33,7 @@
   color: white;
   box-shadow: 0 15px 40px rgba(0,0,0,0.5);
   transition: right 0.6s cubic-bezier(.25,.8,.25,1);
-  z-index: 9999;
+  z-index: 100002;
 }
 
 #nowPlaying.show {
@@ -112,10 +112,11 @@ html, body {
 
 .crt-content {
   position: relative;
-  width: 1920px;   
-  height: 1080px;  
-  transform-origin: top left;
-  transform: rotateX(6deg) rotateY(-3deg) scale(1);
+  width: 100%;   
+  height: 100%;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
   will-change: transform;
 }
 
@@ -223,17 +224,9 @@ body::before {
   z-index: 1; 
 }
 
- .crt::before,
+.crt::before,
 .crt::after {
   border-radius: 10% / 5%; 
-}
-
-.crt-content {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transform: perspective(1200px) rotateX(1deg) scale(1.02);
-  overflow: hidden;
 }
 
 .crt-streaks {
@@ -280,12 +273,12 @@ p a {
   right: 20px;
   display: flex;
   align-items: center;
-  z-index: 10000;
+  z-index: 100000;
   transition: transform 0.5s ease;
 }
 
 #musicBarContainer.hidden {
-  transform: translateX(calc(100% - 32px));
+  transform: translateX(calc(100% - 24px));
 }
 
 #hideToggleBtn {
@@ -303,6 +296,7 @@ p a {
   text-align: center;
   box-shadow: none;
   text-shadow: none;
+  flex-shrink: 0;
 }
 
 #musicBar {
@@ -317,6 +311,9 @@ p a {
   cursor: pointer;
   white-space: nowrap;
   box-sizing: border-box;
+  max-width: calc(100vw - 80px);
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #songListContainer {
@@ -324,10 +321,11 @@ p a {
   bottom: 65px;
   right: 20px;
   width: 300px;
+  max-width: calc(100vw - 40px);
   max-height: 400px;
   background-color: black;
   border: 1px solid #d3d3d3;
-  z-index: 10001;
+  z-index: 100001;
   display: none;
   flex-direction: column;
   box-sizing: border-box;
