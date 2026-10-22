@@ -1,22 +1,38 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <title>SpongeBob Cursor</title>
     <style>
     .no-select {
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    -user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
     }
 
     html, body {
-        cursor: url(spongebob.png), auto;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background-color: black;
+        cursor: url('spongebob.png'), auto;
     }
     </style>
-    <body class="no-slect" style="background-color:black;">
-      <audio loop autoplay src="spongebob.mp3"></audio>
-      <center>
-        <img src="spongebob.png"></img>
-      </center>
-        <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
-    </body>
 </head>
+<body class="no-select">
+    <audio loop autoplay src="spongebob.mp3"></audio>
+    
+    <center style="margin-top: 20vh;">
+        <img src="spongebob.png" alt="SpongeBob">
+    </center>
+
+    <script src="https://unpkg.com"></script>
+    <script>
+        window.addEventListener("load", () => {
+            new cursoreffects.ghostCursor({
+                image: "spongebob.png"
+            });
+        });
+    </script>
+</body>
 </html>
